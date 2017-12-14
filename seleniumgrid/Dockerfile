@@ -63,6 +63,12 @@ EXPOSE 4444
 #====================================================
 COPY selenium-server-standalone-3.8.1.jar /root/
 
+#====================================================
+# Scripts to run appium and connect to Selenium Grid
+#====================================================
+COPY entry_point.sh /root/
+RUN chmod +x /root/entry_point.sh
+
 #========================================
 # Run xvfb and appium server
 #========================================
