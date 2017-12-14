@@ -109,24 +109,25 @@ RUN echo "${TZ}" > /etc/timezone
 # 20000 chromedriver port
 # 30000 selendroid port
 #===============
-EXPOSE 9000  10000 20000 30000
+EXPOSE 9000 10000 20000 30000
 
-COPY chromedrivers /root/
+COPY chromedrivers /root/chromedrivers
 
 #====================================================
-# Scripts to run appium and connect to Selenium Grid
+# Scripts to run appium and generate Selenium Grid nodeconfig
 #====================================================
-COPY \
-  entry_point.sh \
-  generate_config.sh \
-  wireless_connect.sh \
-  wireless_autoconnect.sh \
-    /root/
-RUN chmod +x /root/entry_point.sh && \
-    chmod +x /root/generate_config.sh && \
-    chmod +x /root/wireless_connect.sh && \
-    chmod +x /root/wireless_autoconnect.sh
+ADD entry_point.sh /root/
+ADD generate_config.sh /root/
+ADD wireless_connect.sh /root/
+ADD wireless_autoconnect.sh /root/
 
+RUN chmod +x /root/entry_point.sh
+RUN chmod +x /root/generate_config.sh
+RUN chmod +x /root/wireless_connect.sh
+RUN chmod +x /root/wireless_autoconnect.sh
+
+RUN echo $(ls)
+RUN echo $(pwd)
 #========================================
 # Run xvfb and appium server
 #========================================
