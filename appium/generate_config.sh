@@ -30,39 +30,28 @@ if [ -z "$NODE_TIMEOUT" ]; then
   NODE_TIMEOUT=300
 fi
 
+if [ -z "$OS_VERSION" ]; then
+  OS_VERSION=x.x
+fi
+
 #Get device names
 devices=($(adb devices | grep -E -o "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]:[0-9]+"))
 echo "Devices found: ${#devices[@]}"
 
-#Create capabilities json configs
-function create_capabilities() {
-  capabilities=""
-  for name in ${devices[@]}; do
-    os_version=$OS_VERSION
-    serial_number=$ANDROID_DEVICES
-    capabilities+=$(cat <<_EOF
-{
-    "platform": "$PLATFORM_NAME",
-    "platformName": "$DEVICE_SERIAL",
-    "version": "$os_version",
-    "browserName": "$BROWSER_NAME",
-    "deviceName": "$name",
-    "maxInstances": 1,
-    "applicationName": "$serial_number"
-  }
-_EOF
-    )
-    if [ ${devices[-1]} != $name ]; then
-      capabilities+=', '
-    fi
-  done
-  echo "$capabilities"
-}
-
 #Final node configuration json string
 nodeconfig=$(cat <<_EOF
 {
-  "capabilities": [$(create_capabilities)],
+  "capabilities": [
+  {
+      "platform": "$PLATFORM_NAME",
+      "platformName": "$DEVICE_SERIAL",
+      "version": "$OS_VERSION",
+      "browserName": "$BROWSER_NAME",
+      "deviceName": "$ANDROID_DEVICE",
+      "maxInstances": 1,
+      "applicationName": "$ANDROID_DEVICE"
+    }
+  ],
   "configuration": {
     "cleanUpCycle": 2000,
     "timeout": $NODE_TIMEOUT,

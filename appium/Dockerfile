@@ -126,8 +126,6 @@ RUN chmod +x /root/generate_config.sh
 RUN chmod +x /root/wireless_connect.sh
 RUN chmod +x /root/wireless_autoconnect.sh
 
-RUN echo $(ls)
-RUN echo $(pwd)
 #========================================
 # Run xvfb and appium server
 #========================================
