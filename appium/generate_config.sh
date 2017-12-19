@@ -50,12 +50,12 @@ nodeconfig=$(cat <<_EOF
       "browserName": "${BROWSER_NAME}",
       "deviceName": "${device}",
       "maxInstances": 1,
-      "applicationName": "${ANDROID_DEVIC}E"
+      "applicationName": "${ANDROID_DEVICE}"
     }
   ],
   "configuration": {
     "cleanUpCycle": 2000,
-    "browserTimeout": 60000,
+    "browserTimeout": 60,
     "timeout": $NODE_TIMEOUT,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
     "url": "http://$APPIUM_HOST:$APPIUM_PORT/wd/hub",
@@ -65,7 +65,17 @@ nodeconfig=$(cat <<_EOF
     "register": true,
     "registerCycle": 5000,
     "hubHost": "$SELENIUM_HOST",
-    "hubPort": $SELENIUM_PORT
+    "hubPort": $SELENIUM_PORT,
+    "hubHost": "172.29.50.161",
+    "nodeStatusCheckTimeout": 5000,
+    "nodePolling": 5000,
+    "role": "node",
+    "unregisterIfStillDownAfter": 60000,
+    "downPollingLimit": 2,
+    "debug": false,
+    "servlets" : [],
+    "withoutServlets": [],
+    "custom": {"port":$PORT,"bootstrap-port":$BOOTSTRAP_PORT,"chromedriver-port":$CHROMEDRIVER_PORT,"selendroid-port":$SELENDROID_PORT}
   }
 }
 _EOF

@@ -63,10 +63,10 @@ EXPOSE 4444
 #====================================================
 
 COPY entry_point.sh /root/
-COPY selenium-server-standalone-3.8.1.jar /root/
+COPY selenium-server-standalone-3.7.1.jar /root/
 
 RUN chmod +x /root/entry_point.sh
-RUN chmod +x /root/selenium-server-standalone-3.8.1.jar
+RUN chmod +x /root/selenium-server-standalone-3.7.1.jar
 
 #========================================
 # Run xvfb and appium server
