@@ -116,12 +116,10 @@ COPY chromedrivers /root/chromedrivers
 #====================================================
 ADD entry_point.sh /root/
 ADD generate_config.sh /root/
-ADD wireless_connect.sh /root/
 ADD wireless_autoconnect.sh /root/
 
 RUN chmod +x /root/entry_point.sh
 RUN chmod +x /root/generate_config.sh
-RUN chmod +x /root/wireless_connect.sh
 RUN chmod +x /root/wireless_autoconnect.sh
 
 #========================================
