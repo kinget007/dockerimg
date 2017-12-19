@@ -2,7 +2,7 @@
 
 NODE_CONFIG_JSON="/root/nodeconfig.json"
 #appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --log={} --log-timestamp --no-reset
-CMD="xvfb-run appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --chromedriverExecutable=/root/chromedrivers/${CHROMEDRIVER_VERSION}"
+CMD="xvfb-run appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --chromedriver-executable=/root/chromedrivers/${CHROMEDRIVER_VERSION}"
 
 # if [ ! -z "$REMOTE_ADB" ]; then
 #     /root/wireless_connect.sh
