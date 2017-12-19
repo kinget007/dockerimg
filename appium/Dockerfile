@@ -2,8 +2,6 @@ FROM ubuntu:16.04
 
 MAINTAINER king.yu <806833417@qq.com>
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 #=============
 # Set WORKDIR
 #=============

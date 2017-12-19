@@ -35,25 +35,27 @@ if [ -z "$OS_VERSION" ]; then
 fi
 
 #Get device names
-devices=($(adb devices | grep -E -o "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]:[0-9]+"))
-echo "Devices found: ${#devices[@]}"
+# devices=($(adb devices | grep -E -o "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]:[0-9]+"))
+device=$(adb devices | grep -E -o "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[0-9]+")
+echo "Devices found: ${device}"
 
 #Final node configuration json string
 nodeconfig=$(cat <<_EOF
 {
   "capabilities": [
   {
-      "platform": "$PLATFORM_NAME",
-      "platformName": "$DEVICE_SERIAL",
-      "version": "$OS_VERSION",
-      "browserName": "$BROWSER_NAME",
-      "deviceName": "$ANDROID_DEVICE",
+      "platform": "${PLATFORM_NAME}",
+      "platformName": "${DEVICE_SERIAL}",
+      "version": "${OS_VERSION}",
+      "browserName": "${BROWSER_NAME}",
+      "deviceName": "${device}",
       "maxInstances": 1,
-      "applicationName": "$ANDROID_DEVICE"
+      "applicationName": "${ANDROID_DEVIC}E"
     }
   ],
   "configuration": {
     "cleanUpCycle": 2000,
+    "browserTimeout": 60000,
     "timeout": $NODE_TIMEOUT,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
     "url": "http://$APPIUM_HOST:$APPIUM_PORT/wd/hub",
