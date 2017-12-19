@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL maintainer "yuyilong <yuyilong@hujiang.com>"
+MAINTAINER king.yu <806833417@qq.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
 
