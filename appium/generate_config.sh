@@ -45,12 +45,12 @@ nodeconfig=$(cat <<_EOF
   "capabilities": [
   {
       "platform": "${PLATFORM_NAME}",
-      "platformName": "${DEVICE_SERIAL}",
+      "platformName": "${PLATFORM_NAME}",
       "version": "${OS_VERSION}",
       "browserName": "${BROWSER_NAME}",
       "deviceName": "${device}",
       "maxInstances": 1,
-      "applicationName": "${ANDROID_DEVICE}"
+      "applicationName": "${DEVICE_SERIAL}"
     }
   ],
   "configuration": {
