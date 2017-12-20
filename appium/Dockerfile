@@ -110,6 +110,7 @@ RUN echo "${TZ}" > /etc/timezone
 EXPOSE 9000 10000 20000 30000
 
 COPY chromedrivers /root/chromedrivers
+RUN chmod +x -R /root/chromedrivers/
 
 #====================================================
 # Scripts to run appium and generate Selenium Grid nodeconfig
