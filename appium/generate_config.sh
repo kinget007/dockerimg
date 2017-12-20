@@ -66,7 +66,6 @@ nodeconfig=$(cat <<_EOF
     "registerCycle": 5000,
     "hubHost": "$SELENIUM_HOST",
     "hubPort": $SELENIUM_PORT,
-    "hubHost": "172.29.50.161",
     "nodeStatusCheckTimeout": 5000,
     "nodePolling": 5000,
     "role": "node",
