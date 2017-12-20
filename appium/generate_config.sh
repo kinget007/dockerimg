@@ -15,7 +15,7 @@ if [ -z "$APPIUM_PORT" ]; then
 fi
 
 if [ -z "$SELENIUM_HOST" ]; then
-  SELENIUM_HOST="172.17.0.1"
+  SELENIUM_HOST="127.0.0.1"
 fi
 
 if [ -z "$SELENIUM_PORT" ]; then

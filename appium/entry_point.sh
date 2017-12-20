@@ -13,7 +13,7 @@ if [ ! -z "$REMOTE_ADB" ]; then
     #to avoid immediate run
     sleep ${REMOTE_ADB_POLLING_SEC}
 
-    if [ -z "$ANDROID_DEVICE" ]; then
+    if [ ! -z "$ANDROID_DEVICE" ]; then
       echo "Connecting to: ${ANDROID_DEVICE}"
       adb connect ${ANDROID_DEVICE}
       #to avoid immediate run
