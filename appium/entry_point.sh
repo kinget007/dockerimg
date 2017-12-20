@@ -2,7 +2,7 @@
 
 NODE_CONFIG_JSON="/root/nodeconfig.json"
 #appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --log={} --log-timestamp --no-reset
-CMD="xvfb-run appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --chromedriver-executable=/root/chromedrivers/${CHROMEDRIVER_VERSION}/chromedriver"
+CMD="xvfb-run appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chromedriver-port=20000 --selendroid-port=30000 --log=/root/appium.log  --log-level=error --chromedriver-executable=/root/chromedrivers/${CHROMEDRIVER_VERSION}/chromedriver"
 
 if [ ! -z "$REMOTE_ADB" ]; then
 
