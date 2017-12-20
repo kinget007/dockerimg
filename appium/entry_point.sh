@@ -10,18 +10,24 @@ if [ ! -z "$REMOTE_ADB" ]; then
         REMOTE_ADB_POLLING_SEC=10
     fi
 
-    #to avoid immediate run
-    sleep ${REMOTE_ADB_POLLING_SEC}
+    function connect() {
+        while true
+        do
+            #to avoid immediate run
+            sleep ${REMOTE_ADB_POLLING_SEC}
+            if [! -z "$ANDROID_DEVICE" ]; then
+              echo "Connecting to: ${ANDROID_DEVICE}"
+              #to avoid immediate run
+              sleep ${REMOTE_ADB_POLLING_SEC}
+              adb connect ${ANDROID_DEVICE}
+              device=$(adb devices)
+              echo "Devices found: ${device}"
+              echo "Success!"
+            fi
+        done
+    }
 
-    if [ ! -z "$ANDROID_DEVICE" ]; then
-      echo "Connecting to: ${ANDROID_DEVICE}"
-      adb connect ${ANDROID_DEVICE}
-      #to avoid immediate run
-      sleep ${REMOTE_ADB_POLLING_SEC}
-      device=$(adb devices)
-      echo "Devices found: ${device}"
-      echo "Success!"
-    fi
+    ( trap "true" HUP ; connect ) >/dev/null 2>/dev/null </dev/null & disown
 fi
 
 if [ ! -z "$CONNECT_TO_GRID" ]; then
@@ -29,6 +35,6 @@ if [ ! -z "$CONNECT_TO_GRID" ]; then
   CMD+=" --nodeconfig $NODE_CONFIG_JSON"
 fi
 
-pkill -x xvfb-run
+pkill -x xvfb-run >/dev/null 2>/dev/null </dev/null
 
 $CMD

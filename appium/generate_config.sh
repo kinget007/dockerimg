@@ -74,7 +74,7 @@ nodeconfig=$(cat <<_EOF
     "debug": false,
     "servlets" : [],
     "withoutServlets": [],
-    "custom": {"port":$PORT,"bootstrap-port":$BOOTSTRAP_PORT,"chromedriver-port":$CHROMEDRIVER_PORT,"selendroid-port":$SELENDROID_PORT}
+    "custom": {"port":$APPIUM_PORT,"bootstrap-port":$BOOTSTRAP_PORT,"chromedriver-port":$CHROMEDRIVER_PORT,"selendroid-port":$SELENDROID_PORT}
   }
 }
 _EOF
