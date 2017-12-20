@@ -125,4 +125,5 @@ RUN chmod +x /root/wireless_autoconnect.sh
 #========================================
 # Run xvfb and appium server
 #========================================
-CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+#CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+CMD /root/entry_point.sh
