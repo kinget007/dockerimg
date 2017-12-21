@@ -86,7 +86,7 @@ ENV PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 #npm config set user 0
 #npm config set unsafe-perm true
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g macaca-cli && \
     npm install -g macaca-android && \
