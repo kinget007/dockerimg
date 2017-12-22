@@ -83,8 +83,8 @@ ENV PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 # Install latest nodejs, npm, macacajs
 #====================================
 
-#npm config set user 0
-#npm config set unsafe-perm true
+#RUN  npm config set user 0
+#RUN  npm config set unsafe-perm true
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
     apt-get install -y nodejs && \
@@ -112,7 +112,7 @@ RUN echo "${TZ}" > /etc/timezone
 EXPOSE 5678
 
 #====================================================
-# Scripts to run appium and generate Selenium Grid nodeconfig
+# Scripts to run macaca-inspector
 #====================================================
 ADD entry_point.sh /root/
 
@@ -121,6 +121,6 @@ RUN chmod +x /root/entry_point.sh
 VOLUME ["/root/scripts"]
 
 #========================================
-# Run xvfb and appium server
+# Run xvfb and macaca-inspector server
 #========================================
 CMD macaca server --verbose && /root/entry_point.sh
