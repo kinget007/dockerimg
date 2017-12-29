@@ -7,7 +7,7 @@ CMD="xvfb-run appium -U$ANDROID_DEVICE --port=9000 --bootstrap-port=10000 --chro
 if [ ! -z "$REMOTE_ADB" ]; then
 
     if [ -z "$REMOTE_ADB_POLLING_SEC" ]; then
-        REMOTE_ADB_POLLING_SEC=10
+        REMOTE_ADB_POLLING_SEC=5
     fi
 
     #to avoid immediate run
