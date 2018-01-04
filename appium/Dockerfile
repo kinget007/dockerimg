@@ -117,16 +117,13 @@ RUN chmod +x -R /root/chromedrivers/
 #====================================================
 ADD entry_point.sh /root/
 ADD generate_config.sh /root/
-ADD wireless_autoconnect.sh /root/
 
 RUN chmod +x /root/entry_point.sh
 RUN chmod +x /root/generate_config.sh
-RUN chmod +x /root/wireless_autoconnect.sh
 
 VOLUME ["/root/.android","/root/logs"]
 
 #========================================
 # Run xvfb and appium server
 #========================================
-#CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
 CMD /root/entry_point.sh
